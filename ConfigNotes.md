@@ -6,6 +6,8 @@ Based on Klipper config from the [Voron-0][klipper] repo.
 
 ## General
 
+Enable `config-override.g`
+
 Geometry: CoreXY
 
  - X: min 0 max 120
@@ -47,14 +49,14 @@ Z-probe:
 Currents are peak, vs Klipper which is RMS. Multiplied Klipper values by 1.414
 
 TODO: Verify currents against datasheets once I get the motors
-TODO: Why no interpolation?
+TODO: Will need to validate jerk, these are just the RRF defaults
 
 | Motor | Microstep | Steps/mm | Speed Change | Max Speed | Acceleration | Current |
 |-------|-----------|----------|--------------|-----------|--------------|---------|
-| X     | x32 (off) |          |              |           |              |  707 mA |
-| Y     | x32 (off) |          |              |           |              |  707 mA |
-| Z     | x32 (off) |          |              |           |              |  523 mA |
-| E0    | x32 (off) |          |              |           |              |  424 mA |
+| X     | x32 (off) |      160 |           15 |       200 |         2000 |  707 mA |
+| Y     | x32 (off) |      160 |           15 |       200 |         2000 |  707 mA |
+| Z     | x32 (off) |      800 |            1 |        15 |           45 |  523 mA |
+| E0    | x32 (off) |    287.9 |            2 |        20 |          250 |  424 mA |
 
 ## Endstops
 
@@ -64,7 +66,7 @@ TODO: Why no interpolation?
 
 ## Heaters
 
-TODO
+Heated Bed: 120 C, 100%, 100k, 4981, 1.632834e-7
 
 ## Fans
 
