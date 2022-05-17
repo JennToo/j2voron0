@@ -44,7 +44,17 @@ Z-probe:
 
 ## Motors
 
-TODO
+Currents are peak, vs Klipper which is RMS. Multiplied Klipper values by 1.414
+
+TODO: Verify currents against datasheets once I get the motors
+TODO: Why no interpolation?
+
+| Motor | Microstep | Steps/mm | Speed Change | Max Speed | Acceleration | Current |
+|-------|-----------|----------|--------------|-----------|--------------|---------|
+| X     | x32 (off) |          |              |           |              |  707 mA |
+| Y     | x32 (off) |          |              |           |              |  707 mA |
+| Z     | x32 (off) |          |              |           |              |  523 mA |
+| E0    | x32 (off) |          |              |           |              |  424 mA |
 
 ## Endstops
 
