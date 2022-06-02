@@ -54,10 +54,10 @@ M307 H1 B0 S1.00                                          ; disable bang-bang mo
 M143 H1 S280                                              ; set temperature limit for heater 1 to 280C
 
 ; Fans
-M950 F0 C"out3" Q500                                      ; create fan 0 on pin out3 and set its frequency
-M106 P0 C"Hotend" S1 H1 T45                               ; set fan 0 name and value. Thermostatic control is turned on
-M950 F1 C"out4" Q500                                      ; create fan 1 on pin out4 and set its frequency
-M106 P1 C"Part Cooling" S0 H-1                            ; set fan 1 name and value. Thermostatic control is turned off
+M950 F0 C"out4" Q500                                      ; create fan 0 on pin out4 and set its frequency
+M106 P0 C"Part Cooling" S0 H-1                            ; set fan 0 name and value. Thermostatic control is turned off
+M950 F1 C"out3" Q500                                      ; create fan 1 on pin out3 and set its frequency
+M106 P1 C"Hotend" S1 H1 T45                               ; set fan 1 name and value. Thermostatic control is turned on
 M950 F2 C"out5" Q500                                      ; create fan 2 on pin out5 and set its frequency
 M106 P2 C"Controller" S1 H-1                              ; set fan 2 name and value. Thermostatic control is turned off
 
