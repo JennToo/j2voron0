@@ -24,7 +24,7 @@ M584 X0.1 Y0.0 Z0.2 E0.3                                  ; set drive mapping
 M350 X32 Y32 Z32 E32 I0                                   ; configure microstepping without interpolation
 M92 X160.00 Y160.00 Z800.00 E1400.00                      ; set steps per mm
 M566 X900.00 Y900.00 Z60.00 E120.00                       ; set maximum instantaneous speed changes (mm/min)
-M203 X12000.00 Y12000.00 Z700.00 E1200.00                 ; set maximum speeds (mm/min)
+M203 X12000.00 Y12000.00 Z700.00 E480.00                 ; set maximum speeds (mm/min)
 M201 X2000.00 Y2000.00 Z45.00 E250.00                     ; set accelerations (mm/s^2)
 M906 X707 Y707 Z575 E500                                  ; set motor currents (mA)
 M84 S0                                                    ; Disable motor idle current reduction
@@ -45,7 +45,7 @@ M557 X15:100 Y15:100 S20                                  ; define mesh grid
 ; Heaters
 M308 S0 P"temp0" Y"thermistor" T100000 B4981 C1.632834e-7 ; configure sensor 0 as thermistor on pin temp0
 M950 H0 C"out0" T0                                        ; create bed heater output on out0 and map it to sensor 0
-M307 H0 B0 S1.00 R0.4                                     ; disable bang-bang mode for the bed heater and set PWM limit
+M307 H0 B0 S1.00 R0.3                                     ; disable bang-bang mode for the bed heater and set PWM limit
 M140 H0                                                   ; map heated bed to heater 0
 M143 H0 S110                                              ; set temperature limit for heater 0 to 120C
 M308 S1 P"temp1" Y"thermistor" T100000 B4681 C6.483003e-8 ; configure sensor 1 as thermistor on pin temp1
