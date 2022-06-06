@@ -43,15 +43,16 @@ M558 P0 H5 F120 T6000                                     ; disable Z probe but 
 M557 X15:100 Y15:100 S20                                  ; define mesh grid
 
 ; Heaters
-M308 S0 P"temp0" Y"thermistor" T100000 B4981 C1.632834e-7 ; configure sensor 0 as thermistor on pin temp0
+M308 S0 P"temp0" Y"thermistor" T100000 B4981 C1.632834e-7 A"Bed" ; configure sensor 0 as thermistor on pin temp0
 M950 H0 C"out0" T0                                        ; create bed heater output on out0 and map it to sensor 0
 M307 H0 B0 S1.00 R0.3                                     ; disable bang-bang mode for the bed heater and set PWM limit
 M140 H0                                                   ; map heated bed to heater 0
 M143 H0 S110                                              ; set temperature limit for heater 0 to 120C
-M308 S1 P"temp1" Y"thermistor" T100000 B4681 C6.483003e-8 ; configure sensor 1 as thermistor on pin temp1
+M308 S1 P"temp1" Y"thermistor" T100000 B4681 C6.483003e-8 A"Hotend" ; configure sensor 1 as thermistor on pin temp1
 M950 H1 C"out1" T1                                        ; create nozzle heater output on out1 and map it to sensor 1
 M307 H1 B0 S1.00                                          ; disable bang-bang mode for heater  and set PWM limit
 M143 H1 S280                                              ; set temperature limit for heater 1 to 280C
+M308 S2 P"temp2" Y"thermistor" T100000 B4981 C1.632834e-7 A"Chamber" ; configure sensor 2 as thermistor on pin temp2
 
 ; Fans
 M950 F0 C"out4" Q500                                      ; create fan 0 on pin out4 and set its frequency
@@ -65,6 +66,8 @@ M106 P2 C"Controller" S1 H-1                              ; set fan 2 name and v
 M563 P0 D0 H1 F0                                          ; define tool 0
 G10 P0 X0 Y0 Z0                                           ; set tool 0 axis offsets
 G10 P0 R0 S0                                              ; set initial tool 0 active and standby temperatures to 0C
+
+M591 D0 P1 C"^io3.in" S1                                  ; create filament sensor on io3
 
 ; Custom settings are not defined
 
