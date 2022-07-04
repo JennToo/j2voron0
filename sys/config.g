@@ -19,14 +19,14 @@ M586 P2 S0                                                ; disable Telnet
 M569 P0.0 S1                                              ; physical drive 0.0 goes forwards
 M569 P0.1 S1                                              ; physical drive 0.1 goes forwards
 M569 P0.2 S0                                              ; physical drive 0.2 goes forwards
-M569 P0.3 S0                                              ; physical drive 0.3 goes forwards
+M569 P0.3 S1                                              ; physical drive 0.3 goes forwards
 M584 X0.1 Y0.0 Z0.2 E0.3                                  ; set drive mapping
-M350 X32 Y32 Z32 E32 I0                                   ; configure microstepping without interpolation
-M92 X160.00 Y160.00 Z800.00 E1400.00                      ; set steps per mm
+M350 X32 Y32 Z32 E16 I0                                   ; configure microstepping without interpolation
+M92 X160.00 Y160.00 Z800.00 E562.00                      ; set steps per mm
 M566 X900.00 Y900.00 Z60.00 E120.00                       ; set maximum instantaneous speed changes (mm/min)
 M203 X12000.00 Y12000.00 Z700.00 E480.00                 ; set maximum speeds (mm/min)
 M201 X2000.00 Y2000.00 Z45.00 E250.00                     ; set accelerations (mm/s^2)
-M906 X707 Y707 Z575 E500                                  ; set motor currents (mA)
+M906 X707 Y707 Z575 E700                                  ; set motor currents (mA)
 M84 S0                                                    ; Disable motor idle current reduction
 
 ; Axis Limits
@@ -48,7 +48,7 @@ M950 H0 C"out0" T0                                        ; create bed heater ou
 M307 H0 B0 S1.00 R0.3                                     ; disable bang-bang mode for the bed heater and set PWM limit
 M140 H0                                                   ; map heated bed to heater 0
 M143 H0 S110                                              ; set temperature limit for heater 0 to 120C
-M308 S1 P"temp1" Y"thermistor" T100000 B4681 C6.483003e-8 A"Hotend" ; configure sensor 1 as thermistor on pin temp1
+M308 S1 P"temp1" Y"thermistor" T100000 B4725 C7.06e-8 A"Hotend" ; configure sensor 1 as thermistor on pin temp1
 M950 H1 C"out1" T1                                        ; create nozzle heater output on out1 and map it to sensor 1
 M307 H1 B0 S1.00                                          ; disable bang-bang mode for heater  and set PWM limit
 M143 H1 S280                                              ; set temperature limit for heater 1 to 280C
@@ -60,7 +60,7 @@ M106 P0 C"Part Cooling" S0 H-1                            ; set fan 0 name and v
 M950 F1 C"out3" Q500                                      ; create fan 1 on pin out3 and set its frequency
 M106 P1 C"Hotend" S1 H1 T45                               ; set fan 1 name and value. Thermostatic control is turned on
 M950 F2 C"out5" Q500                                      ; create fan 2 on pin out5 and set its frequency
-M106 P2 C"Controller" S1 H-1                              ; set fan 2 name and value. Thermostatic control is turned off
+M106 P2 C"Controller" S0.5 H-1                          ; set fan 2 name and value. Thermostatic control is turned on
 
 ; Tools
 M563 P0 D0 H1 F0                                          ; define tool 0
@@ -68,6 +68,10 @@ G10 P0 X0 Y0 Z0                                           ; set tool 0 axis offs
 G10 P0 R0 S0                                              ; set initial tool 0 active and standby temperatures to 0C
 
 M591 D0 P1 C"^io3.in" S1                                  ; create filament sensor on io3
+
+; Display
+M918 P2 E4 F1000000                                       ; create Fysetc Mini 12864 V2.1
+M150 R50 U0 B250 X2 F0 Q2500000                           ; set display backlight color (R and G/U are swapped)
 
 ; Custom settings are not defined
 
