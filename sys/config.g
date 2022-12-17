@@ -23,10 +23,10 @@ M569 P0.3 S1                                              ; physical drive 0.3 g
 M584 X0.1 Y0.0 Z0.2 E0.3                                  ; set drive mapping
 M350 X32 Y32 Z32 E16 I0                                   ; configure microstepping without interpolation
 M92 X160.00 Y160.00 Z800.00 E562.00                      ; set steps per mm
-M566 X900.00 Y900.00 Z60.00 E120.00                       ; set maximum instantaneous speed changes (mm/min)
+M566 X500.00 Y500.00 Z30.00 E120.00                       ; set maximum instantaneous speed changes (mm/min)
 M203 X12000.00 Y12000.00 Z700.00 E480.00                 ; set maximum speeds (mm/min)
 M201 X2000.00 Y2000.00 Z45.00 E250.00                     ; set accelerations (mm/s^2)
-M906 X707 Y707 Z575 E700                                  ; set motor currents (mA)
+M906 X707 Y707 Z700 E700                                  ; set motor currents (mA)
 M84 S0                                                    ; Disable motor idle current reduction
 
 ; Axis Limits
